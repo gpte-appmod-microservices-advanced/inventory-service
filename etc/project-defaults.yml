@@ -1,0 +1,12 @@
+swarm:
+  datasources:
+    data-sources:
+      InventoryDS:
+        driver-name: postgresql
+        connection-url: jdbc:postgresql://inventory-postgresql:5432/inventorydb
+        user-name: jboss
+        password: jboss
+
+store:
+  service:
+    url: http://store-service.user91-coolstore.svc:8080

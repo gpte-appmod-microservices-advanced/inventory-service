@@ -1,0 +1,8 @@
+{
+  "realm": "coolstore",
+  "bearer-only": true,
+  "auth-server-url": "https://secure-sso-user91-coolstore-infra.apps.016b.openshift.opentlc.com/auth",
+  "ssl-required": "external",
+  "realm-public-key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2coNIYZ3pYN639IMLPN+vyl20ecRHV01YQ92JV5jDBIi4Wd/KocPasKeWyhuewyOxkem3teVBKo46ded1d5fwkRHf6XOlPqEVA+Ym/we7/wNol+3h4tlev0NmaxluN8HdVo94ii8KY2FZilCGUerpkIvPR06gwUG51O+HGDREPr3OV9aZNqB93apuCNShie3k0DuoXn4ZEBIFX+S6rJNwiLDO0lAsdFAgK77kPX/hS2GJ0k6x6JVe5vV5Xx8VK16cZBfUVRCo9naYvbaO55Q3gady2nP8McpEPVBHAN8shwMwOqCvBvU0w6VEa8Kwd7o997aU2mUdwujVWslb+moHwIDAQAB",
+  "resource": "coolstore"
+}
