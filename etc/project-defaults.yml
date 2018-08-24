@@ -7,6 +7,6 @@ swarm:
         user-name: jboss
         password: jboss
 
-store:
-  service:
-    url: http://store-service.user91-coolstore.svc:8080
+   store:
+     service:
+       url: http://updateme
