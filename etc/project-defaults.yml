@@ -7,6 +7,6 @@ swarm:
         user-name: jboss
         password: jboss
 
-   store:
-     service:
-       url: http://updateme
+  store:
+    service:
+      url: http://updateme
