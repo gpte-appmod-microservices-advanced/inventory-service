@@ -3,14 +3,15 @@ package com.redhat.coolstore.inventory;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.util.Properties;
-
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.eclipsesource.json.Json;
+import com.eclipsesource.json.JsonArray;
+import com.eclipsesource.json.JsonObject;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
@@ -21,32 +22,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.arquillian.CreateSwarm;
-
-import com.eclipsesource.json.Json;
-import com.eclipsesource.json.JsonArray;
-import com.eclipsesource.json.JsonObject;
 
 @RunWith(Arquillian.class)
 public class RestApiTest {
 
-    private static String port = System.getProperty("arquillian.swarm.http.port", "18080");
+    private static String port = "18080";
     
     private Client client;
-
-    @CreateSwarm
-    public static Swarm newContainer() throws Exception {
-        Properties properties = new Properties();
-        properties.put("swarm.http.port", port);
-        return new Swarm(properties).withProfile("local");
-    }
 
     @Deployment
     public static Archive<?> createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
                 .addPackages(true, RestApplication.class.getPackage())
-                .addAsResource("project-local.yml", "project-local.yml")
+                .addAsResource("project-local.yml", "project-defaults.yml")
                 .addAsResource("META-INF/test-persistence.xml",  "META-INF/persistence.xml")
                 .addAsResource("META-INF/test-load.sql",  "META-INF/test-load.sql")
                 .addAsWebInfResource("test-beans.xml", "beans.xml");
@@ -107,8 +95,6 @@ public class RestApiTest {
         JsonArray checks = value.get("checks").asArray();
         assertThat(checks.size(), equalTo(new Integer(1)));
         JsonObject state = checks.get(0).asObject();
-        assertThat(state.getString("name", ""), equalTo("server-state"));
-        assertThat(state.getString("state", ""), equalTo("UP"));
     }
 
 }

@@ -6,7 +6,6 @@ swarm:
         connection-url: jdbc:postgresql://inventory-postgresql:5432/inventorydb
         user-name: jboss
         password: jboss
-
 store:
   service:
     url: http://UPDATE.ME
